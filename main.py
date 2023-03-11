@@ -1,5 +1,6 @@
 from navigator import *
 from vegetarian import *
+from double import *
 import webbrowser
 import re
 
@@ -31,6 +32,8 @@ def main():
                'Type "make step vegetarian" to get a vegetarian version of the current step. \n'
                'Type "make non-vegetarian" to get a list of non-vegetarian ingredients/substitutions and their measurements, as well as the original. \n',
                'Type "make step non-vegetarian" to get a non-vegetarian version of the current step. \n'
+               'Type "double step" or "half step" to double or half the quantities in the current step, respectively. \n',
+               'Type "double ingredients" or "half ingredients" to double or half the quantities of all the ingredients, respectively. \n',
                'Type "exit" to exit program. \n']
     o = ''.join(options)
     print(o)
@@ -100,6 +103,14 @@ def main():
             print(make_non_veg(ingredients_dict))
         elif query == 'make step non-vegetarian':
             print(make_nonveg_step(step))
+        elif query == 'double step':
+            print(double_step(step))
+        elif query == 'double ingredients':
+            print(double_ings(ingredients_dict))
+        elif query == 'half step':
+            print(half_step(step))
+        elif query == 'half ingredients':
+            print(half_ings(ingredients_dict))
         elif query not in hard_coded :
             query = query.lower()
             if 'how long' in query:
