@@ -1,4 +1,5 @@
 from navigator import *
+from vegetarian import *
 import webbrowser
 import re
 
@@ -7,10 +8,11 @@ def main():
     recipe_obj = navigator(url)
     recipe = recipe_obj[0]
     ingredients_dict = recipe_obj[1]
-    ingredients = []
+    # print(ingredients_dict)
+    # ingredients = []
     hard_coded=['next','back','repeat','how','help','ingredients','exit']
-    for i in ingredients_dict.keys():
-        ingredients.append(i + ', ' + ingredients_dict[i])
+    # for i in ingredients_dict.keys():
+    #     ingredients.append(i + ', ' + ingredients_dict[i])
     boo = True
     curr = 0
     prev= None
@@ -24,7 +26,11 @@ def main():
                'Type "what is...(rest of your question)" to get a Google search for your general query.\n',
                'Type "how to...(rest of your question)" to open a link to a YouTube search on your question.\n',
                'Type "help" to show these options again. \n',
-               'Type "ingredients" to get a list of ingredients and their measurements. \n'
+               'Type "ingredients" to get a list of ingredients and their measurements. \n',
+               'Type "make vegetarian" to get a list of vegetarian ingredients/substitutions and their measurements, as well as the original. \n',
+               'Type "make step vegetarian" to get a vegetarian version of the current step. \n'
+               'Type "make non-vegetarian" to get a list of non-vegetarian ingredients/substitutions and their measurements, as well as the original. \n',
+               'Type "make step non-vegetarian" to get a non-vegetarian version of the current step. \n'
                'Type "exit" to exit program. \n']
     o = ''.join(options)
     print(o)
@@ -79,7 +85,21 @@ def main():
         elif query == 'help':
             print(o)
         elif query == 'ingredients':
-            print(ingredients)
+            print(ingredients_dict)
+        elif query == 'make vegetarian':
+            print('Original: ')
+            print(ingredients_dict)
+            print('Vegetarian: ')
+            print(make_veg(ingredients_dict))
+        elif query == 'make step vegetarian':
+            print(make_veg_step(step))
+        elif query == 'make non-vegetarian':
+            print('Original: ')
+            print(ingredients_dict)
+            print('Non-Vegetarian: ')
+            print(make_non_veg(ingredients_dict))
+        elif query == 'make step non-vegetarian':
+            print(make_nonveg_step(step))
         elif query not in hard_coded :
             query = query.lower()
             if 'how long' in query:
