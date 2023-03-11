@@ -38,9 +38,9 @@ def navigator(url):
                 doc = nlp(j)[0]
                 separate_ingredients.append(doc.lemma_.lower())
         if p['quantity'] == '':
-            parsed_ingredients[p['name']] = 'to taste'
+            parsed_ingredients[p['name']] = ['to taste', p['comment']]
         else:
-            parsed_ingredients[p['name']] = p['quantity'] + ' ' + p['unit']
+            parsed_ingredients[p['name']] = [p['quantity'] + ' ' + p['unit'], p['comment']]
     for r in final_instructions:
         recipe_dict = dict()
         recipe_obj = dict()
