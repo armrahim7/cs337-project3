@@ -1,6 +1,7 @@
 from navigator import *
 from vegetarian import *
 from double import *
+from healthy import *
 import webbrowser
 import re
 
@@ -24,10 +25,10 @@ def main():
                'Type "how to...(rest of your question)" to open a link to a YouTube search on your question.\n',
                'Type "help" to show these options again. \n',
                'Type "ingredients" to get a list of ingredients and their measurements. \n',
-               'Type "make vegetarian" to get a list of vegetarian ingredients/substitutions and their measurements, as well as the original. \n',
-               'Type "make step vegetarian" to get a vegetarian version of the current step. \n'
-               'Type "make non-vegetarian" to get a list of non-vegetarian ingredients/substitutions and their measurements, as well as the original. \n',
-               'Type "make step non-vegetarian" to get a non-vegetarian version of the current step. \n'
+               'Type "make vegetarian" or "make non-vegetarian" to get a list of vegetarian or non-vegetarian ingredients/substitutions and their measurements, respectively. \n',
+               'Type "make step vegetarian" or "make step non-vegetarian" to get a vegetarian or non-vegetarian version of the current step, respectively. \n',
+               'Type "make healthy" or "make unhealthy" to get a list of healthy or non-healthy ingredients/substitutions and their measurements, respectively. \n',
+               'Type "make step healthy" or "make step unhealthy" to get a healthy or non-healthy version of the current step, respectively. \n'
                'Type "double step" or "half step" to double or half the quantities in the current step, respectively. \n',
                'Type "double ingredients" or "half ingredients" to double or half the quantities of all the ingredients, respectively. \n',
                'Type "exit" to exit program. \n']
@@ -86,19 +87,21 @@ def main():
         elif query == 'ingredients':
             print(ingredients_dict)
         elif query == 'make vegetarian':
-            print('Original: ')
-            print(ingredients_dict)
-            print('Vegetarian: ')
             print(make_veg(ingredients_dict))
         elif query == 'make step vegetarian':
             print(make_veg_step(step))
         elif query == 'make non-vegetarian':
-            print('Original: ')
-            print(ingredients_dict)
-            print('Non-Vegetarian: ')
             print(make_non_veg(ingredients_dict))
         elif query == 'make step non-vegetarian':
             print(make_nonveg_step(step))
+        elif query == 'make healthy':
+            print(make_healthy(ingredients_dict))
+        elif query == 'make step healthy':
+            print(make_healthy_step(step))
+        elif query == 'make unhealthy':
+            print(make_unhealthy(ingredients_dict))
+        elif query == 'make step unhealthy':
+            print(make_unhealthy_step(step))
         elif query == 'double step':
             print(double_step(step))
         elif query == 'double ingredients':
