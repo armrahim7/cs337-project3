@@ -5,6 +5,7 @@ veg = {
     # 'steak' : 'seitan',
     'pork' : 'tofu',
     'fish' : 'tofu',
+    'salmon' : 'tofu',
     'ham' : 'tofurkey',
     'turkey': 'tofurkey',
     'bacon' : 'tempeh',
