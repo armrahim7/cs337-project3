@@ -7,6 +7,6 @@ Group Members: Arman Rahim, Dwayne Morgan, Noelle Barron
 3. Run main.py
 4. Follow the prompts
 
-#Sources:
+# Sources:
 List of cooking words from: https://diannej.com/2013/100-action-verbs-from-julia-child-recipes/
 List of utensils from: https://listonic.com/kitchen-utensils-list/
