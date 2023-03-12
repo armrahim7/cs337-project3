@@ -31,12 +31,14 @@ def make_healthy(ings):
     ingredients = dict(ings)
     changed_keys = []
     new_keys = []
+    subs = []
     for i in ingredients.keys():
         for j in healthy.keys():
             if (j in i):
                 new_key = i.replace(j, healthy[j])
                 new_keys.append((new_key, ingredients[i]))
                 changed_keys.append(i)
+                print(f'{i} substituted with {healthy[j]}. \n')
     for n in new_keys:
         ingredients[n[0]] = n[1]
     for k in changed_keys:
@@ -59,6 +61,7 @@ def make_unhealthy(ings):
                 new_key = i.replace(k, '')
                 new_keys.append((new_key, ingredients[i]))
                 changed_keys.append(i)
+                print(f'{i} substituted with {new_key}. \n')
         for j in unhealthy.keys():
             if (j in i):
                 if 'brown' in i:
@@ -68,6 +71,7 @@ def make_unhealthy(ings):
                     new_key = i.replace(j, unhealthy[j])
                 new_keys.append((new_key, ingredients[i]))
                 changed_keys.append(i)
+                print(f'{i} substituted with {unhealthy[j]}. \n')
     for n in new_keys:
         ingredients[n[0]] = n[1]
     for k in changed_keys:
