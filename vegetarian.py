@@ -23,12 +23,14 @@ def make_veg(ings):
         if 'broth' in i:
             new_keys.append(('vegetable broth', ingredients[i]))
             changed_keys.append(i)
+            print(f'{i} substituted with vegetable broth. \n')
         else:
             for j in veg.keys():
                 if (j in i) and ('broth' not in i):
                     new_key = i.replace(j, veg[j])
                     new_keys.append((new_key, ingredients[i]))
                     changed_keys.append(i)
+                    print(f'{i} substituted with {veg[j]}. \n')
     for n in new_keys:
         ingredients[n[0]] = n[1]
     for k in changed_keys:
@@ -49,12 +51,14 @@ def make_non_veg(ings):
         if 'broth' in i:
             new_keys.append(('chicken broth', ingredients[i]))
             changed_keys.append(i)
+            print(f'{i} substituted with chicken broth. \n')
         else:
             for j in non_veg.keys():
                 if (j in i) and ('broth' not in i):
                     new_key = i.replace(j, non_veg[j])
                     new_keys.append((new_key, ingredients[i]))
                     changed_keys.append(i)
+                    print(f'{i} substituted with {non_veg[j]}. \n')
     for n in new_keys:
         ingredients[n[0]] = n[1]
     for k in changed_keys:
