@@ -2,6 +2,7 @@ from navigator import *
 from vegetarian import *
 from double import *
 from healthy import *
+from cuisine_sub import *
 import webbrowser
 import re
 
@@ -116,7 +117,9 @@ def main():
             print(half_ings(ingredients_dict))
         elif query == 'cuisine':
             sub=cuisine_sub(ingredients_dict)
+            print('Italian version of ingredients in recipe: \n')
             print(sub[1])
+            print('\n')
             print('The following substitions were made:\n')
             for trans in sub[0]:
                 print(trans,end='\n')
@@ -186,9 +189,26 @@ main()
 #Non-Vegetarian: https://www.allrecipes.com/recipe/244716/shirataki-meatless-meat-pad-thai/
 #Healthy: https://www.allrecipes.com/recipe/16167/beef-bourguignon-i/
 #Unhealthy: https://www.allrecipes.com/recipe/228285/teriyaki-salmon/
-#At least two of these for cuisine transformation:
+#Cuisine (Italian) Transformation:
 #       https://www.allrecipes.com/recipe/229293/korean-saewoo-bokkeumbap-shrimp-fried-rice/
-#       https://www.allrecipes.com/recipe/7757/tiramisu-cheesecake/
 #       https://www.allrecipes.com/recipe/73303/mexican-rice-iii/
 #One more recipe to best show transformations: PUT LINK HERE
+#List of queries:
+        # next,back,repeat - move pointer for current step
+        # any integer within 1 and the number of steps: jumps to that step
+        # how - YouTube search on how to perform current step
+        # tools- list of tools
+        # what temperature - temperature of current step
+        # what is ... - Google search of query
+        # how to ... - YouTube search of query
+        # help - list of options
+        # ingredients - dictionary of ingredients, their amounts, and any descriptors
+        #               format - {ing: ['amount', 'descriptor']}
+        # make (vegetarian/non-vegetarian/healthy/unhealthy) - returns dictionary of transformed version of recipe ingredients
+        # make step (vegetarian/non-vegetarian/healthy/unhealthy) - returns transformed version of current step
+        # (double/half) step - returns current step with modified quantitites
+        # (double/half) ingredients - returns dictionary of ingredients with modified quantities
+        # cuisine - returns dictionary of Italian version of recipe ingredients
+        # exit - exits the program
+
 
