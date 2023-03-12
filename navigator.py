@@ -3,7 +3,6 @@ import speech_recognition as sr
 from ingredient_parser import parse_ingredient
 from recipe_scrapers import scrape_me
 nlp = spacy.load('en_core_web_lg')
-# cooking_words()
 f = open('cook_words.txt', 'r')
 cooking_library = f.read().splitlines()
 g = open('utensils.txt', 'r')
@@ -61,12 +60,13 @@ def navigator(url):
         for i in doc:
             if i.lemma_.lower() in cooking_library:
                 verbs.append(i)
-            # if i.dep_ == 'dobj':
-            #     ings.append(i)
             if (i.lemma_.lower() in separate_ingredients):
                 ings.append(i.text)
-            if (i.lemma_.lower() in utensils_library) or (i.text.lower() in utensils_library):
-                uts.append(i)
+            # if (i.lemma_.lower() in utensils_library) or (i.text.lower() in utensils_library):
+            #     uts.append(i)
+        for u in utensils_library:
+            if u in r:
+                uts.append(u)
         recipe_obj['ingredients'] = ings
         recipe_obj['utensils'] = uts
         recipe_obj['temperature'] = temp
@@ -76,9 +76,6 @@ def navigator(url):
             recipe_obj['cooking words'] = verbs
         recipe_dict[r] = recipe_obj
         steps_array.append(recipe_dict)
-    # print(steps_array)
-    # # print(parsed_ingredients)
-    # # print(separate_ingredients)
     return [steps_array, parsed_ingredients]
 
 
