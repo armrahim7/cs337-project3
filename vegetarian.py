@@ -2,7 +2,7 @@ import copy
 
 veg = {
     'beef' : 'tofu',
-    'steak' : 'seitan',
+    # 'steak' : 'seitan',
     'pork' : 'tofu',
     'fish' : 'tofu',
     'ham' : 'tofurkey',
