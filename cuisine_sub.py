@@ -1,9 +1,6 @@
 
 from recipe_scrapers import scrape_me
 from ingredient_parser import parse_ingredient
-import requests
-from bs4 import BeautifulSoup
-import spacy
 
 # Send an HTTP request to the page
 #url = 'https://www.allrecipes.com/recipe/285077/easy-one-pot-ground-turkey-pasta/'
