@@ -64,18 +64,18 @@ herbs ={
 
 #lamb for beef- more assertive
 spice=[]
-for list in spices.values():
-    spice += list
+for lst in spices.values():
+    spice += lst
 for list in herbs.values():
-    spice += list
+    spice += lst
 
 main=  []
 main += meats
-for list in fish.values():
-    main += list
+for lst in fish.values():
+    main += lst
 oil=[]
-for list in oils.values():
-    oil += list
+for lst in oils.values():
+    oil += lst
 
 
 def cuisine_sub(ingred_dict):
@@ -89,10 +89,9 @@ def cuisine_sub(ingred_dict):
             #classify ingredients
             if ing in main:
                 Italian_meats=['Salami', 'Soppresata', 'Prosciutto', 'Pepperoni']
-                subs.append(f' Try adding more Italian spices to your {ing}')
+                subs.append(f'There were some Italian spices added to the ingredients for your {ing}')
                 #add to directions
             elif ing in spice and ing not in Italian_spices_herbs :
-                Italian_spices_herbs=['basil','thyme','oregano','rosemary','sage','bay leaves','garlic powder']
                 flavor_prof = [i for i in spices if ing in spices[i]]
                 for ingred in Italian_spices_herbs:
                     if ingred not in recipe and ingred not in used :
@@ -100,7 +99,7 @@ def cuisine_sub(ingred_dict):
                         sub = ingred
                         used.append(ingred)
                         break
-                subs.append(f'{ing} could be replaced by {sub}. However,{ing}, has a/n {flavor_prof} flavor that would is lost your dish!')
+                subs.append(f'{ing} was replaced by {sub}. However,{ing}, has a/n {flavor_prof} flavor that would is lost your dish!')
             elif ing in Dairy or 'cheese' in ing and ing not in Italian_cheeses:
                 for ingred in Italian_cheeses:
                     if ingred not in recipe and ingred not in used:
@@ -108,22 +107,22 @@ def cuisine_sub(ingred_dict):
                         sub = ingred
                         used.append(ingred)
                         break
-                subs.append(f'{ing} could be replaced by {sub}.')
+                subs.append(f'{ing} was replaced by {sub}.')
             elif ing in oil :
                 if ing == 'olive oil':
                     subs.append(f'Olive Oil is essential in Italian Cuisine. Try adding a bit more!')
                 else:
-                    subs.append(f'{ing} could be replaced by Olive Oil')
+                    subs.append(f'{ing} was replaced by Olive Oil')
                     new_recipe['olive oil']= ingred_dict[ing]
             elif 'pasta' in ing:
-                subs.append('You could try making homemade pasta!')
+                subs.append('You could try making homemade pasta! Type "how to make homemade paste" for a instructinos link.)
             else:
                 new_recipe[ing]=ingred_dict[ing]
     #additions
     for sp in Italian_spices_herbs:
         if sp not in used:
             if sp not in recipe:
-                subs.append(f'Also, try adding 1 tsp of {sp} to your dish to give it more Italian flavor')
+                 new_recipe[ingred]= ingred_dict[ing]
             else:
                 subs.append(f'There is already {sp} in your dish, which is an Italain staple, mabybe try adding a bit more? ')
             break
