@@ -32,6 +32,7 @@ def main():
                'Type "make step healthy" or "make step unhealthy" to get a healthy or non-healthy version of the current step, respectively. \n'
                'Type "double step" or "half step" to double or half the quantities in the current step, respectively. \n',
                'Type "double ingredients" or "half ingredients" to double or half the quantities of all the ingredients, respectively. \n',
+               'Type "cuisine" to modify your recipe into Italian Style. \n',
                'Type "exit" to exit program. \n']
     o = ''.join(options)
     print(o)
@@ -113,6 +114,12 @@ def main():
             print(half_step(step))
         elif query == 'half ingredients':
             print(half_ings(ingredients_dict))
+        elif query == 'cuisine':
+            sub=cuisine_sub(ingredients_dict)
+            print(sub[1])
+            print('The following substitions were made:\n')
+            for trans in sub[0]:
+                print(trans,end='\n')
         elif query not in hard_coded :
             query = query.lower()
             if 'how long' in query:
