@@ -1,8 +1,14 @@
+from fractions import Fraction
 skip_words = ['degree', 'degrees', 'degree.', 'degrees.', 'degree,', 'degrees,',
               'minute', 'minutes','minute.', 'minutes.', 'minute,', 'minutes,', 
               'hour', 'hours', 'hour.', 'hours.', 'hour,', 'hours,', 
               'seconds', 'seconds.', 'seconds,',
               'days', 'day','days.', 'day.','days,', 'day,',
+              'inches', 'inch','inches.', 'inch.','inches,', 'inch,', 'in.', 'in.,'
+              'cm', 'cm,', 'cm.', 'centimeter', 'centimeters','centimeter,', 'centimeters,','centimeter.', 'centimeters.',
+              'foot', 'feet','foot,', 'feet,','foot.', 'feet.', 'ft.', 'ft.,'
+              'mm', 'mm.', 'millimeter', 'millimeters','millimeter.', 'millimeters.','millimeter,', 'millimeters,',
+              'meter', 'meters', 'meter.', 'meters.', 'meter,', 'meters,',
               'to', 'or']
 def double_ings(ings):
     ingredients = dict()
@@ -24,10 +30,15 @@ def double_step(step):
     for ind, i in enumerate(split_step):
         try:
             num = float(i)*2
-            if split_step[ind+1] not in skip_words:
+            if split_step[ind+1] not in skip_words and split_step[ind+2] not in skip_words:
                 split_step[ind] = str(num)
         except:
-            pass
+            try:
+                num = Fraction(i)*2
+                if split_step[ind+1] not in skip_words and split_step[ind+2] not in skip_words:
+                    split_step[ind] = str(num)
+            except:
+                 pass
     return ' '.join(split_step)
 
 def half_ings(ings):
@@ -50,11 +61,13 @@ def half_step(step):
     for ind, i in enumerate(split_step):
         try:
             num = float(i)/2
-            if split_step[ind+1] not in skip_words:
+            if split_step[ind+1] not in skip_words and split_step[ind+2] not in skip_words:
                 split_step[ind] = str(num)
         except:
-            pass
+            try:
+                num = Fraction(i)/2
+                if split_step[ind+1] not in skip_words and split_step[ind+2] not in skip_words:
+                    split_step[ind] = str(num)
+            except:
+                 pass
     return ' '.join(split_step)
-
-
-print(half_step('Heat remaining 2 tablespoons oil in the same skillet. Add chopped onions; cook and stir until just tender, about 2 to 3 minutes. Stir in reserved onions and carrots from the marinade; mix well, then use a slotted spoon to transfer vegetables into the bowl with beef.'))
