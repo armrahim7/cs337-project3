@@ -20,6 +20,7 @@ def main():
                'Type a number to go to that step. \n',
                'Type "repeat" to repeat current step.\n',
                'Type "how" to open a link to a YouTube search on how to perform current step.\n',
+               'Type "tools" to get a list of tools used in the current step. \n',
                'Type "what temperature" to get the temperature needed for the current step.\n',
                'Type "what is...(rest of your question)" to get a Google search for your general query.\n',
                'Type "how to...(rest of your question)" to open a link to a YouTube search on your question.\n',
@@ -70,6 +71,8 @@ def main():
             else:
                 quer = '+'.join(list(recipe[curr].keys())[0].split())
                 webbrowser.open(f'https://www.youtube.com/results?search_query=how+to+{quer}')
+        elif query == 'tools':
+            print(recipe[curr][step]['utensils'])
         elif query == 'what temperature':
             temp = recipe[curr][step]['temperature']
             if(temp):
@@ -161,6 +164,8 @@ def main():
                     print(' '.join(ans))
                 else:
                     print('Sorry the ingredient is not in this step.')
+            else:
+                print('Incorrect command. Please enter a valid command.')
         elif query == 'exit':
             print('Goodbye!')
             boo = False
