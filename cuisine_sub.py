@@ -24,7 +24,7 @@ import spacy
 spices={'Earthy' : ["curry powder", "garlic powder", "onion powder", "turmeric", "vadouvan", "za'atar"],
 'Floral':	["cardamom", "coriander", "fennel", "lavender", "nutmeg"," saffron", "star anise"],
 'Peppery':	["allspice", "ground ginger", "peppercorns", "mustard powder", "sumac",'pepper'],
-'Warm':	["cinnamon", "chile", "chili powder", "cloves", "cumin", "nutmeg", "paprika"]
+'Warm':	["cinnamon", "chile", "chili powder", "cloves", "ground cumin", "cumin", "nutmeg", "paprika", "adobo"]
 }
 
 meats= ('chuck', 'brisket', 'round roast','beef','steak','filet mignon','lamb','chicken','ground beef','ground turkey','turkey','pork')
@@ -60,13 +60,18 @@ herbs ={
 'Thyme':	['Bay leaves', 'herbes de Provence', 'oregano', 'rosemary', 'sage']
 }
 
+sauces = {
+    'soy sauce': 'agrodolce',
+    'oyster sauce': 'prosecco mignonette',
+
+}
 
 
 #lamb for beef- more assertive
 spice=[]
 for lst in spices.values():
     spice += lst
-for list in herbs.values():
+for lst in herbs.values():
     spice += lst
 
 main=  []
@@ -80,10 +85,10 @@ for lst in oils.values():
 
 def cuisine_sub(ingred_dict):
     new_recipe={}
-    recipe= recipe.keys()
+    recipe= ingred_dict.keys()
     subs=[]
     used=[]
-    Italian_spices_herbs=['basil','thyme','oregano','rosemary','sage','bay leaves','garlic powder']
+    Italian_spices_herbs=['basil','thyme','oregano','rosemary','sage','bay leaves','garlic powder', 'adobo']
     Italian_cheeses=['Mozzarella','Parmesan','Parmesan cheese','Ricotta']
     for ing in recipe:
             #classify ingredients
@@ -99,7 +104,9 @@ def cuisine_sub(ingred_dict):
                         sub = ingred
                         used.append(ingred)
                         break
-                subs.append(f'{ing} was replaced by {sub}. However,{ing}, has a/n {flavor_prof} flavor that would is lost your dish!')
+                subs.append(f'{ing} was replaced by {sub}.')
+                if(len(flavor_prof)):
+                    subs.append(f'However,{ing} has a(n) {flavor_prof[0]} flavor that would be lost in your dish!')
             elif ing in Dairy or 'cheese' in ing and ing not in Italian_cheeses:
                 for ingred in Italian_cheeses:
                     if ingred not in recipe and ingred not in used:
@@ -114,16 +121,23 @@ def cuisine_sub(ingred_dict):
                 else:
                     subs.append(f'{ing} was replaced by Olive Oil')
                     new_recipe['olive oil']= ingred_dict[ing]
+            elif ing in sauces:
+                subs.append(f'{ing} was replaced by {sauces[ing]}')
+                new_recipe[sauces[ing]] = ingred_dict[ing]
             elif 'pasta' in ing:
-                subs.append('You could try making homemade pasta! Type "how to make homemade paste" for a instructinos link.)
+                subs.append('You could try making homemade pasta! Type "how to make homemade pasta" for a instructions link.')
             else:
                 new_recipe[ing]=ingred_dict[ing]
     #additions
     for sp in Italian_spices_herbs:
         if sp not in used:
             if sp not in recipe:
-                 new_recipe[ingred]= ingred_dict[ing]
+                 new_recipe[sp]= ingred_dict[ing]
             else:
-                subs.append(f'There is already {sp} in your dish, which is an Italain staple, mabybe try adding a bit more? ')
+                subs.append(f'There is already {sp} in your dish, which is an Italian staple, mabybe try adding a bit more? ')
             break
     return subs, new_recipe
+
+
+# ing = {'vegetable oil': ['1 tablespoon', ''], 'rice': ['1 cup', 'long grain white'], 'chicken broth': ['1.5 cups', ''], 'tomato': ['1 ', 'seeded and chopped'], 'onion': ['0.5 ', 'finely chopped'], 'green bell pepper': ['0.5 ', 'finely chopped'], 'jalapeno pepper': ['1 ', ['fresh', 'chopped']], 'cilantro': ['0.5 cups', 'chopped fresh'], 'chicken bouillon': ['1 cube', ''], 'garlic': ['1 clove', 'halved'], 'ground cumin': ['0.5 teaspoons', ''], 'salt and pepper': ['to taste', 'to taste']}
+# print(cuisine_sub(ing)[0])
