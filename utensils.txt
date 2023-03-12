@@ -28,7 +28,7 @@ corkscrew
 bottle opener
 frying pan
 skillet
-saucepans
+saucepan
 ovenproof dish
 roasting tin
 baking sheet
@@ -63,3 +63,7 @@ mallet
 baking sheet
 sheet
 plastic sheet
+resealable plastic bag
+resealable bag
+ziploc
+bag
