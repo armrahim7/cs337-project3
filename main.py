@@ -9,11 +9,7 @@ def main():
     recipe_obj = navigator(url)
     recipe = recipe_obj[0]
     ingredients_dict = recipe_obj[1]
-    # print(ingredients_dict)
-    # ingredients = []
     hard_coded=['next','back','repeat','how','help','ingredients','exit']
-    # for i in ingredients_dict.keys():
-    #     ingredients.append(i + ', ' + ingredients_dict[i])
     boo = True
     curr = 0
     prev= None
