@@ -10,3 +10,6 @@ Group Members: Arman Rahim, Dwayne Morgan, Noelle Barron
 # Sources:
 List of cooking words from: https://diannej.com/2013/100-action-verbs-from-julia-child-recipes/  
 List of utensils from: https://listonic.com/kitchen-utensils-list/
+
+# GitHub Link:
+https://github.com/armrahim7/cs337-project3
