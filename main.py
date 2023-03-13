@@ -25,6 +25,7 @@ def main():
                'Type "what temperature" to get the temperature needed for the current step.\n',
                'Type "what is...(rest of your question)" to get a Google search for your general query.\n',
                'Type "how to...(rest of your question)" to open a link to a YouTube search on your question.\n',
+               'Type "how long" to get the amount of time the step takes. \n',
                'Type "help" to show these options again. \n',
                'Type "ingredients" to get a list of ingredients and their measurements. \n',
                'Type "make vegetarian" or "make non-vegetarian" to get a list of vegetarian or non-vegetarian ingredients/substitutions and their measurements, respectively. \n',
@@ -207,6 +208,7 @@ main()
         # what temperature - temperature of current step
         # what is ... - Google search of query
         # how to ... - YouTube search of query
+        # how long- amount of time of the step if listed in the step
         # help - list of options
         # ingredients - dictionary of ingredients, their amounts, and any descriptors
         #               format - {ing: ['amount', 'descriptor']}
