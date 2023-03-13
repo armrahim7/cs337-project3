@@ -63,6 +63,7 @@ def main():
                 curr = int(query)-1
         elif query == 'repeat':
             curr += 0
+            print(f'Step {curr+1}: ' + step)
         elif query == 'how':
             if(len(recipe[curr][step]['ingredients'])) and (len(recipe[curr][step]['cooking words'])):
                 if(len(recipe[curr][step]['ingredients'])):
@@ -92,37 +93,42 @@ def main():
         elif query == 'ingredients':
             print(ingredients_dict)
         elif query == 'make vegetarian':
-            print(make_veg(ingredients_dict))
+            ingredients_dict=make_veg(ingredients_dict)
+            print(ingredients_dict)
         elif query == 'make step vegetarian':
             print(make_veg_step(step))
         elif query == 'make non-vegetarian':
-            print(make_non_veg(ingredients_dict))
+            ingredients_dict=make_non_veg(ingredients_dict)
+            print(ingredients_dict)
         elif query == 'make step non-vegetarian':
             print(make_nonveg_step(step))
         elif query == 'make healthy':
-            print(make_healthy(ingredients_dict))
+            ingredients_dict = make_healthy(ingredients_dict)
+            print(ingredients_dict)
         elif query == 'make step healthy':
             print(make_healthy_step(step))
         elif query == 'make unhealthy':
-            print(make_unhealthy(ingredients_dict))
+            ingredients_dict = make_unhealthy(ingredients_dict)
+            print(ingredients_dict)
         elif query == 'make step unhealthy':
             print(make_unhealthy_step(step))
         elif query == 'double step':
             print(double_step(step))
         elif query == 'double ingredients':
-            print(double_ings(ingredients_dict))
+            ingredients_dict = double_ings(ingredients_dict)
+            print(ingredients_dict)
         elif query == 'half step':
             print(half_step(step))
         elif query == 'half ingredients':
-            print(half_ings(ingredients_dict))
+            ingredients_dict = half_ings(ingredients_dict)
+            print(ingredients_dict)
         elif query == 'cuisine':
             sub=cuisine_sub(ingredients_dict)
-            print('Italian version of ingredients in recipe: \n')
-            print(sub[1])
-            print('\n')
+            ingredients_dict= sub[1]
+            print(ingredients_dict)
             print('The following substitions were made:\n')
-            for trans in sub[0]:
-                print(trans,end='\n')
+            for change in sub[0]:
+                print(change,end='\n')
         elif query not in hard_coded :
             query = query.lower()
             if 'how long' in query:
@@ -192,7 +198,7 @@ main()
 #Cuisine (Italian) Transformation:
 #       https://www.allrecipes.com/recipe/229293/korean-saewoo-bokkeumbap-shrimp-fried-rice/
 #       https://www.allrecipes.com/recipe/73303/mexican-rice-iii/
-#One more recipe to best show transformations: PUT LINK HERE
+#One more recipe to best show transformations: https://www.allrecipes.com/recipe/212721/indian-chicken-curry-murgh-kari/
 #List of queries:
         # next,back,repeat - move pointer for current step
         # any integer within 1 and the number of steps: jumps to that step
